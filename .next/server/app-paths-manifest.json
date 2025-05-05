@@ -1,0 +1,13 @@
+{
+  "/api/cards/inventory/route": "app/api/cards/inventory/route.js",
+  "/api/cards/templates/route": "app/api/cards/templates/route.js",
+  "/admin/cards/design/page": "app/admin/cards/design/page.js",
+  "/admin/cards/batch/page": "app/admin/cards/batch/page.js",
+  "/api/cards/audit/route": "app/api/cards/audit/route.js",
+  "/patients/lookup/page": "app/patients/lookup/page.js",
+  "/admin/cards/assign/page": "app/admin/cards/assign/page.js",
+  "/admin/cards/inventory/page": "app/admin/cards/inventory/page.js",
+  "/api/cards/printable/route": "app/api/cards/printable/route.js",
+  "/admin/cards/audit/page": "app/admin/cards/audit/page.js",
+  "/admin/cards/print/page": "app/admin/cards/print/page.js"
+}

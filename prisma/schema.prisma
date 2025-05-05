@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model CardInventory {
+  barcodeValue        String   @id
+  uniqueId            String
+  batchNumber         String?
+  status              CardStatus
+  assignedToPatientId String?
+  receivedDate        DateTime
+  batch               Batch?   @relation(fields: [batchNumber], references: [batchNumber])
+  auditLogs           AuditLog[]
+}
+
+model Batch {
+  batchNumber String   @id
+  vendor      String
+  quantity    Int
+  importDate  DateTime
+  cards       CardInventory[]
+}
+
+model AuditLog {
+  eventId      String      @id @default(uuid())
+  barcodeValue String
+  action       AuditAction
+  timestamp    DateTime    @default(now())
+  performedBy  String
+  card         CardInventory @relation(fields: [barcodeValue], references: [barcodeValue])
+}
+
+enum CardStatus {
+  available
+  assigned
+  inactive
+}
+
+enum AuditAction {
+  imported
+  reserved
+  assigned
+  deactivated
+  generated
+} 
